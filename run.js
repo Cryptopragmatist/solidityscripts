@@ -5,6 +5,15 @@
      await waveContract.deployed(); // wait until the contract is successfully deployed to the local blockchain
      console.log("Contract address:", waveContract.address); // gives the address of the deployed contract to interact with it
     
+     let count = await waveContract.getTotalWaves(); // calls the getTotalWaves function and put it in var count
+     console.log(count.toNumber()); // converts the count into number
+
+     let waveTxn = await waveContract.wave(); // create a new wave and add it to the contract in the blockchain
+
+     await waveTxn.wait(); // wait transaction to be mined
+
+     count = await waveContract.getTotalWaves();
+     console.log(count.toNumber()); 
  
 }
  
